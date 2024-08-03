@@ -3,6 +3,7 @@ import org.example.Pages.CartPage;
 import org.example.Pages.CategoryPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -32,7 +33,8 @@ public class AddToCartTest {
         categoryPage.selectFirstProduct();
         categoryPage.addToCart();
 
-        driver.get("https://zoolandia.com.ua/ua/shop/sobakam/suhoy-korm-dlya-sobak");
+        driver.findElement(By.id("cart_popup"));
+//        driver.get("https://zoolandia.com.ua/ua/shop/sobakam/suhoy-korm-dlya-sobak");
         int numberOfCartItems = cartPage.getNumberOfCartItems();
         Assert.assertEquals(numberOfCartItems, 1, "The product was added to the cart.");
     }
